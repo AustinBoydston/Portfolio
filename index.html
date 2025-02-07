@@ -21,6 +21,37 @@
 </div>
 
 </head>
+
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+  
+</canvas>
+<div>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    </div>
+<script>const canvas = document.getElementById("myCanvas");
+
+    canvas.width = window.innerWidth;
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    
+    window.addEventListener("resize", resizeCanvas);
+    
+    resizeCanvas();
+</script>
+<script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.moveTo(0, 0);
+    ctx.lineTo(200, 100);
+    ctx.stroke();
+</script>
+
 <body>
     <h1>Austin Boydston Portfolio</h1>
     <div>As a Programming and Mathematics Educator, I have been blessed with the opportunity to share my passion with a wide range of students. This has naturally led to a slow accumulation of custom projects and other educational materials I have created over the years and is the reason for the creation of this portfolio to act as a central repository for all my content. Feel free to browse around!</div>
