@@ -22,7 +22,7 @@
 
 </head>
 
-<canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+<canvas id="GridCanvas" width="200" height="100" style="border:1px solid #000000;">
   
 </canvas>
 <div>
@@ -31,7 +31,9 @@
     <span class="dot"></span>
     <span class="dot"></span>
     </div>
-<script>const canvas = document.getElementById("myCanvas");
+
+<!-- The following script resizes the canvas to to full window size -->
+<script>const canvas = document.getElementById("GridCanvas");
 
     canvas.width = window.innerWidth;
     
@@ -44,13 +46,10 @@
     
     resizeCanvas();
 </script>
-<script>
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    ctx.moveTo(0, 0);
-    ctx.lineTo(200, 100);
-    ctx.stroke();
-</script>
+
+<!-- Call the animation script for the dot matrix flow -->
+<script src="animatedGrid.js"></script>
+
 
 <body>
     <h1>Austin Boydston Portfolio</h1>
