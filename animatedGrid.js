@@ -3,7 +3,18 @@ window.onload = function() {
     var context = canvas.getContext("2d");
 
     var circles = [];
+    //Create the circle that follows the mouse
+    var mouseCircle =  {
+        x: 200,
+        y: 200,
+        radius: 1,
+        dx: 1,
+        dy: 1,
+        color: getColor()
+    }
     var numberOfCircles = 250;
+    //distance to check if circles are close
+    var dist_ = 100;
 
     // Create 100 circles with random positions and velocities
     for (var i = 0; i < numberOfCircles; i++) {
@@ -13,18 +24,15 @@ window.onload = function() {
             radius: 1,
             dx: (Math.random() - 0.5),
             dy: (Math.random() - 0.5),
-            color: getRandomColor()
+            color: getColor()
         });
     }
 
-    function getRandomColor() {
+    
+
+    function getColor() {
+        //Gree hacker color
         color = '#00c71e';
-        return color;
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
         return color;
     }
 
@@ -53,10 +61,19 @@ window.onload = function() {
                 circle.dy = -circle.dy;
             }
 
+            //draw mouse circle
+            // Draw each circle
+            context.beginPath();
+            context.arc(mouseCircle.x, mouseCircle.y, circle.radius, 0, 2 * Math.PI, false);
+            context.fillStyle = mouseCircle.color;
+            context.fill();
+            context.lineWidth = .5;
+            context.strokeStyle = '#00c71e';
+            context.stroke();
     
         });
         
-        closeCircles = detectCloseCircles(circles, 100);
+        closeCircles = detectCloseCircles(circles, dist_, mouseCircle);
 
         //loop through the close circles and draw a line
         closeCircles.forEach(function(circlePair){
@@ -82,14 +99,18 @@ window.onload = function() {
     }
     
     // Detect is a circle is close to to all the others
-    function detectCloseCircles(circles, thresholdDistance) {
+    function detectCloseCircles(circles, thresholdDistance, mouseCircle) {
         var closePairs = [];
         
         for (var i = 0; i < circles.length; i++) {
+            if (areCirclesWithinDistance(circles[i], mouseCircle, thresholdDistance)){
+                closePairs.push([circles[i], mouseCircle])
+            }
             for (var j = i + 1; j < circles.length; j++) {
                 if (areCirclesWithinDistance(circles[i], circles[j], thresholdDistance)) {
                     closePairs.push([circles[i], circles[j]]);
                 }
+               
             }
         }
         
@@ -101,7 +122,7 @@ window.onload = function() {
     function isMouseOverCircle(mouseX, mouseY) {
         var dx = mouseX - circle.x;
         var dy = mouseY - circle.y;
-        return Math.sqrt(dx * dx + dy * dy) < circle.radius;
+        return Math.sqrt(dx * dx + dy * dy) < circle.radius + dist_;
     }
 
     canvas.addEventListener("mousemove", function(event) {
@@ -109,14 +130,17 @@ window.onload = function() {
         var mouseX = event.clientX - rect.left;
         var mouseY = event.clientY - rect.top;
 
-        if (isMouseOverCircle(mouseX, mouseY)) {
-            circle.color = "red"; // Change color if the mouse is over the circle
-        } else {
-            circle.color = "blue";
-        }
+        updateMouseCircle(mouseX, mouseY);
 
         
     });
+
+    function updateMouseCircle(x, y){
+        mouseCircle.x = x;
+        mouseCircle.y = y;
+        mouseCircle.dx = x;
+        mouseCircle.dy = y;
+    }
 
     drawCircles(); // Start the animation
 }
