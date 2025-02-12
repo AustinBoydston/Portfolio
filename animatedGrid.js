@@ -5,8 +5,8 @@ window.onload = function() {
     var circles = [];
     //Create the circle that follows the mouse
     var mouseCircle =  {
-        x: 200,
-        y: 200,
+        x: 2,
+        y: 2,
         radius: 1,
         dx: 1,
         dy: 1,
@@ -39,6 +39,10 @@ window.onload = function() {
     function drawCircles() {
         context.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
 
+         // Set glow effect
+         context.shadowBlur = 10; // Adjust the blur radius for the glow
+         context.shadowColor = '#00c71e'; // Color of the glow
+
         circles.forEach(function(circle) {
             // Draw each circle
             context.beginPath();
@@ -64,7 +68,7 @@ window.onload = function() {
             //draw mouse circle
             // Draw each circle
             context.beginPath();
-            context.arc(mouseCircle.x, mouseCircle.y, circle.radius, 0, 2 * Math.PI, false);
+            context.arc(mouseCircle.x, mouseCircle.y, mouseCircle.radius, 0, 2 * Math.PI, false);
             context.fillStyle = mouseCircle.color;
             context.fill();
             context.lineWidth = .5;
