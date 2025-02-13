@@ -1,7 +1,8 @@
 window.onload = function() {
     var canvas = document.getElementById("GridCanvas");
+    var IntroText = document.getElementById("Introduction");
     var context = canvas.getContext("2d");
-
+//    context.scale(0.5, 0.5)
     var circles = [];
     //Create the circle that follows the mouse
     var mouseCircle =  {
@@ -12,21 +13,26 @@ window.onload = function() {
         dy: 1,
         color: getColor()
     }
-    var numberOfCircles = 250;
+    var numberOfCircles = 200;
     //distance to check if circles are close
-    var dist_ = 100;
+    var dist_ = 150;
 
-    // Create 100 circles with random positions and velocities
-    for (var i = 0; i < numberOfCircles; i++) {
-        circles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            radius: 1,
-            dx: (Math.random() - 0.5),
-            dy: (Math.random() - 0.5),
-            color: getColor()
-        });
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+    function moveIntro(){   
+        //Set the intro text to the center of the canvas (CENTER THE DIV)
+        leftPos = (canvas.width - IntroText.offsetWidth) / 2;
+        topPos = (canvas.height - IntroText.offsetHeight) / 2;
+        IntroText.style.top = `${topPos}px`;
+        IntroText.style.left = `${leftPos}px`;
     }
+    
+
+   
 
     
 
@@ -38,7 +44,7 @@ window.onload = function() {
 
     function drawCircles() {
         context.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-
+        //TextContext.clearRect(0, 0, IntroText.width, IntroText.height);
          // Set glow effect
          context.shadowBlur = 10; // Adjust the blur radius for the glow
          context.shadowColor = '#00c71e'; // Color of the glow
@@ -65,18 +71,19 @@ window.onload = function() {
                 circle.dy = -circle.dy;
             }
 
-            //draw mouse circle
-            // Draw each circle
-            context.beginPath();
-            context.arc(mouseCircle.x, mouseCircle.y, mouseCircle.radius, 0, 2 * Math.PI, false);
-            context.fillStyle = mouseCircle.color;
-            context.fill();
-            context.lineWidth = .5;
-            context.strokeStyle = '#00c71e';
-            context.stroke();
+            
     
         });
-        
+        //draw mouse circle
+        context.beginPath();
+        context.arc(mouseCircle.x, mouseCircle.y, mouseCircle.radius, 0, 2 * Math.PI, false);
+        context.fillStyle = mouseCircle.color;
+        context.fill();
+        context.lineWidth = .5;
+        context.strokeStyle = '#00c71e';
+        context.stroke();
+
+
         closeCircles = detectCloseCircles(circles, dist_, mouseCircle);
 
         //loop through the close circles and draw a line
@@ -146,5 +153,29 @@ window.onload = function() {
         mouseCircle.dy = y;
     }
 
+    
+
+    //resize the canvas to the screen size
+    canvas.width = window.innerWidth;
+    
+   
+    
+    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("resize", moveIntro);
+
+    resizeCanvas();
+    moveIntro();
+    //refactor into function later
+    // Create 100 circles with random positions and velocities
+    for (var i = 0; i < numberOfCircles; i++) {
+        circles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: 1,
+            dx: (Math.random() - 0.5),
+            dy: (Math.random() - 0.5),
+            color: getColor()
+        });
+    }
     drawCircles(); // Start the animation
 }

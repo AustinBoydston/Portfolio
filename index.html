@@ -8,9 +8,18 @@
 
 </head>
 
-<canvas id="GridCanvas" width="200" height="100" style="border:1px solid #000000;">
-  
-</canvas>
+<div class="container">
+    <div id = "IntroDiv">
+        <h1 id = "Introduction">Hello, I'm Austin. I am a full stack web developer.</h1> 
+    </div>
+    <canvas id="GridCanvas" width="200" height="100" style="border:1px solid #000000;"></canvas>
+</div>
+   
+    
+
+
+
+
 <div class = "top-nav">
     <a class="active" href="#home">Home</a>
     <a> - </a>
@@ -33,20 +42,7 @@
     <span class="dot"></span>
     </div>
 
-<!-- The following script resizes the canvas to to full window size -->
-<script>const canvas = document.getElementById("GridCanvas");
 
-    canvas.width = window.innerWidth;
-    
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    
-    window.addEventListener("resize", resizeCanvas);
-    
-    resizeCanvas();
-</script>
 
 <!-- Call the animation script for the dot matrix flow -->
 <script src="animatedGrid.js"></script>

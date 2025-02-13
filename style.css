@@ -16,3 +16,14 @@ body {
     border-radius: 50%;
     display: inline-block;
   }
+
+.container {
+    position: relative;
+    display: inline-block;
+}
+
+h1 {
+    position: absolute;
+    color: #00c71e;
+    z-index: 10;
+}
