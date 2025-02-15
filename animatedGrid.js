@@ -17,7 +17,7 @@ window.onload = function() {
     //distance to check if circles are close
     var dist_ = 150;
 
-
+    //fit the canvas to the current screen size
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -35,10 +35,11 @@ window.onload = function() {
    
 
     
-
+//This function controls the color of the animation
     function getColor() {
+        color = '#7DF9FF';
         //Gree hacker color
-        color = '#00c71e';
+       // color = '#00c71e';
         return color;
     }
 
@@ -47,7 +48,7 @@ window.onload = function() {
         //TextContext.clearRect(0, 0, IntroText.width, IntroText.height);
          // Set glow effect
          context.shadowBlur = 10; // Adjust the blur radius for the glow
-         context.shadowColor = '#00c71e'; // Color of the glow
+         context.shadowColor = getColor(); // Color of the glow
 
         circles.forEach(function(circle) {
             // Draw each circle
@@ -56,7 +57,7 @@ window.onload = function() {
             context.fillStyle = circle.color;
             context.fill();
             context.lineWidth = .5;
-            context.strokeStyle = '#00c71e';
+            context.strokeStyle = getColor();
             context.stroke();
             
             // Update circle position
@@ -80,7 +81,7 @@ window.onload = function() {
         context.fillStyle = mouseCircle.color;
         context.fill();
         context.lineWidth = .5;
-        context.strokeStyle = '#00c71e';
+        context.strokeStyle = getColor();
         context.stroke();
 
 
@@ -92,7 +93,7 @@ window.onload = function() {
                 context.beginPath();
                 context.moveTo(circlePair[0].x, circlePair[0].y);
                 context.lineTo(circlePair[1].x, circlePair[1].y);
-                context.strokeStyle = '#00c71e';
+                context.strokeStyle = getColor();
                 context.lineWidth = 2;
                 context.stroke();        
 
@@ -118,7 +119,7 @@ window.onload = function() {
                 closePairs.push([circles[i], mouseCircle])
             }
             for (var j = i + 1; j < circles.length; j++) {
-                if (areCirclesWithinDistance(circles[i], circles[j], thresholdDistance)) {
+                if (areCirclesWithinDistance(circles[i], circles[j], thresholdDistance) && areCirclesWithinDistance(circles[j], mouseCircle, thresholdDistance + 100)) {
                     closePairs.push([circles[i], circles[j]]);
                 }
                
