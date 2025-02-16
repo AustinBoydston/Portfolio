@@ -1,9 +1,9 @@
 window.onload = function() {
     var canvas = document.getElementById("GridCanvas");
-    var IntroText = document.getElementById("Introduction");
     var context = canvas.getContext("2d");
 //    context.scale(0.5, 0.5)
     var circles = [];
+    
     //Create the circle that follows the mouse
     var mouseCircle =  {
         x: 2,
@@ -13,9 +13,10 @@ window.onload = function() {
         dy: 1,
         color: getColor()
     }
-    var numberOfCircles = 200;
+
+    var numberOfCircles = setAmountOfCircles();
     //distance to check if circles are close
-    var dist_ = 150;
+    var dist_ = 100;
 
     //fit the canvas to the current screen size
     function resizeCanvas() {
@@ -23,12 +24,23 @@ window.onload = function() {
         canvas.height = window.innerHeight;
       }
 
+    //sets the amount of circles based on the size of the screen
+    function setAmountOfCircles(){
+        y = window.innerHeight;
+        x = window.innerWidth;
+        amount = Math.sqrt((x*x) + (y*y))/12;
+        return amount; 
+    }
+
     function moveIntro(){   
         //Set the intro text to the center of the canvas (CENTER THE DIV)
-        leftPos = (canvas.width - IntroText.offsetWidth) / 2;
+        leftPos = ((canvas.width - IntroText.offsetWidth) / 2) - 150;
         topPos = (canvas.height - IntroText.offsetHeight) / 2;
         IntroText.style.top = `${topPos}px`;
         IntroText.style.left = `${leftPos}px`;
+        leftPos = leftPos + 200;
+        IntroText2.style.top = `${topPos}px`;
+        IntroText2.style.top = `${leftPos}px`;
     }
     
 
@@ -137,15 +149,7 @@ window.onload = function() {
         return Math.sqrt(dx * dx + dy * dy) < circle.radius + dist_;
     }
 
-    canvas.addEventListener("mousemove", function(event) {
-        var rect = canvas.getBoundingClientRect();
-        var mouseX = event.clientX - rect.left;
-        var mouseY = event.clientY - rect.top;
-
-        updateMouseCircle(mouseX, mouseY);
-
-        
-    });
+   
 
     function updateMouseCircle(x, y){
         mouseCircle.x = x;
@@ -159,13 +163,25 @@ window.onload = function() {
     //resize the canvas to the screen size
     canvas.width = window.innerWidth;
     
-   
-    
     window.addEventListener("resize", resizeCanvas);
-    window.addEventListener("resize", moveIntro);
+    //window.addEventListener("resize", moveIntro);
 
     resizeCanvas();
-    moveIntro();
+   var mouseThrottleTimeout = null
+    canvas.addEventListener("mousemove", function(event) {
+        if (!mouseThrottleTimeout){
+            mouseThrottleTimeout = setTimeout(function(){
+                var rect = canvas.getBoundingClientRect();
+                var mouseX = event.clientX - rect.left;
+                var mouseY = event.clientY - rect.top;
+                updateMouseCircle(mouseX, mouseY);
+                mouseThrottleTimeout = null;
+
+            }, 10); 
+            }
+        
+    });
+    // moveIntro();
     //refactor into function later
     // Create 100 circles with random positions and velocities
     for (var i = 0; i < numberOfCircles; i++) {

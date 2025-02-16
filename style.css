@@ -8,6 +8,7 @@
 body {
     background-color: #0d1117;
     color: #eeeeee;
+    height: 100vh;
 }
 
 .dot {
@@ -18,15 +19,64 @@ body {
     display: inline-block;
   }
 
-.container {
+.background1 {
     position: relative;
-    display: inline-block;
+    z-index: 1;
 }
 
-h1 {
-    position: absolute;
+.container {
+    display: block;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    margin-top: -400px;
+}
+
+.text1 {
+    animation: 1s ease-out 0s slideInLeft;
+    line-height: 20%;
     color: #f3f3f3;
     z-index: 10;
     font-family:'Montserrat';
     font-weight: 100;
 }
+
+.text2 {
+    animation: 1s ease-out 0s slideInRight;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    visibility: hidden;
+    color: #f3f3f3;
+    z-index: 11;
+    font-family:'Montserrat';
+    font-weight: 100;
+    margin-top: 30px;
+}
+
+@keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-15%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    0% {
+      opacity: 0;
+      visibility: visible;
+      transform: translateX(15%);
+    }
+    100% {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+  }
