@@ -1,13 +1,14 @@
 window.onload = function() {
     var canvas = document.getElementById("GridCanvas");
     var context = canvas.getContext("2d");
-//    context.scale(0.5, 0.5)
+   
+   
     var circles = [];
     
     //Create the circle that follows the mouse
     var mouseCircle =  {
-        x: 2,
-        y: 2,
+        x: window.innerWidth/2,
+        y: window.innerHeight/2,
         radius: 1,
         dx: 1,
         dy: 1,
@@ -16,7 +17,7 @@ window.onload = function() {
 
     var numberOfCircles = setAmountOfCircles();
     //distance to check if circles are close
-    var dist_ = 100;
+    var dist_ = 120;
 
     //fit the canvas to the current screen size
     function resizeCanvas() {
@@ -28,28 +29,14 @@ window.onload = function() {
     function setAmountOfCircles(){
         y = window.innerHeight;
         x = window.innerWidth;
-        amount = Math.sqrt((x*x) + (y*y))/12;
+        amount = Math.sqrt((x*x) + (y*y))/11;
         return amount; 
     }
-
-    function moveIntro(){   
-        //Set the intro text to the center of the canvas (CENTER THE DIV)
-        leftPos = ((canvas.width - IntroText.offsetWidth) / 2) - 150;
-        topPos = (canvas.height - IntroText.offsetHeight) / 2;
-        IntroText.style.top = `${topPos}px`;
-        IntroText.style.left = `${leftPos}px`;
-        leftPos = leftPos + 200;
-        IntroText2.style.top = `${topPos}px`;
-        IntroText2.style.top = `${leftPos}px`;
-    }
-    
-
-   
 
     
 //This function controls the color of the animation
     function getColor() {
-        color = '#7DF9FF';
+        color ='#00ff55';
         //Gree hacker color
        // color = '#00c71e';
         return color;
@@ -59,16 +46,16 @@ window.onload = function() {
         context.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
         //TextContext.clearRect(0, 0, IntroText.width, IntroText.height);
          // Set glow effect
-         context.shadowBlur = 10; // Adjust the blur radius for the glow
-         context.shadowColor = getColor(); // Color of the glow
-
+        context.shadowBlur = 10; // Adjust the blur radius for the glow
+        context.shadowColor = getColor(); // Color of the glow 
+        
         circles.forEach(function(circle) {
             // Draw each circle
             context.beginPath();
             context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
-            context.fillStyle = circle.color;
+            context.fillStyle = getColor();
             context.fill();
-            context.lineWidth = .5;
+            context.lineWidth = 2;
             context.strokeStyle = getColor();
             context.stroke();
             
@@ -90,10 +77,7 @@ window.onload = function() {
         //draw mouse circle
         context.beginPath();
         context.arc(mouseCircle.x, mouseCircle.y, mouseCircle.radius, 0, 2 * Math.PI, false);
-        context.fillStyle = mouseCircle.color;
         context.fill();
-        context.lineWidth = .5;
-        context.strokeStyle = getColor();
         context.stroke();
 
 
@@ -105,8 +89,6 @@ window.onload = function() {
                 context.beginPath();
                 context.moveTo(circlePair[0].x, circlePair[0].y);
                 context.lineTo(circlePair[1].x, circlePair[1].y);
-                context.strokeStyle = getColor();
-                context.lineWidth = 2;
                 context.stroke();        
 
         });
@@ -175,6 +157,12 @@ window.onload = function() {
                 var mouseX = event.clientX - rect.left;
                 var mouseY = event.clientY - rect.top;
                 updateMouseCircle(mouseX, mouseY);
+                const revealed_Area = document.querySelector(".revealedArea");
+                const gradientCenterX = (event.clientX / window.innerWidth ) * 100;
+                const gradientCenterY = (event.clientY / window.innerHeight) * 100;
+                revealed_Area.style.background = `radial-gradient(circle 340px at ${gradientCenterX}% ${gradientCenterY}%, transparent 70%, rgba(0,0,0,0.70) )`; 
+
+
                 mouseThrottleTimeout = null;
 
             }, 10); 

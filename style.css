@@ -19,9 +19,19 @@ body {
     display: inline-block;
   }
 
+
+.revealedArea{
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle 280px at 50% 50%, transparent 10%, rgba(0, 0, 0, 0.70));
+    pointer-events: none;
+    z-index: 3;
+}
+
 .background1 {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    pointer-events: auto;
 }
 
 .container {
@@ -32,8 +42,15 @@ body {
     position: relative;
     height: 100vh;
     width: 100vw;
-    z-index: 2;
+    z-index: 4;
     margin-top: -400px;
+    pointer-events: none;
+}
+
+
+.HighlightText {
+color: #ff007b;
+text-shadow: #ff007b 0px 0px 15px;
 }
 
 .text1 {
@@ -47,7 +64,6 @@ body {
 
 .text2 {
     animation: 1s ease-out 0s slideInRight;
-    animation-delay: 1s;
     animation-fill-mode: forwards;
     visibility: hidden;
     color: #f3f3f3;
@@ -57,10 +73,13 @@ body {
     margin-top: 30px;
 }
 
+
+
+
 @keyframes slideInLeft {
     0% {
       opacity: 0;
-      transform: translateX(-15%);
+      transform: translateX(-5%);
     }
     100% {
       opacity: 1;
@@ -72,11 +91,50 @@ body {
     0% {
       opacity: 0;
       visibility: visible;
-      transform: translateX(15%);
+      transform: translateX(5%);
     }
     100% {
       opacity: 1;
       visibility: visible;
       transform: translateX(0);
+    }
+  }
+
+
+  .button1{
+    margin-top: 30px;
+    color: #ff007b;
+    background-color: #00000000;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ff007b;
+    text-align: center;
+    font-size: large;
+    visibility: hidden; 
+    animation: 1s ease-out 0s slideUp;
+    animation-fill-mode: forwards;
+    height: 40px;
+    width: 250px;
+    pointer-events: auto;
+  }
+
+  .button1:hover{
+    height: 50px;
+    width: 260px;
+    font-size: x-large;
+    transition: 0.7s;
+    box-shadow: #ff007b 0px 0px 0px 15px;
+  }
+
+  @keyframes slideUp {
+    0% {
+        opacity: 0;
+        visibility: visible;
+        transform: translateY(-15%)
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0%)
     }
   }
