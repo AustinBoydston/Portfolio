@@ -17,37 +17,25 @@
 
 <div class="container">
     
-    <h1 class = "text1" id = "Introduction">Hello, I'm <span class = "HighlightText">Austin</span>.</h1> 
-    <h1 class = "text2" id = "Introduction2">I am a full stack developer.</h1> 
+    <h4 class = "text1" id = "Introduction">Hello, I'm <span class = "HighlightText">Austin</span>.</h1> 
+    <h4 class = "text2" id = "Introduction2">I am a full stack developer.</h1> 
     <a class = "button1" id = "viewWork">↓ View My Work ↓</a>
 </div>
 
 </div>
-<div>
-    <h2>My Work</h2>
-</div>
-
-
-
-
-   
-    
-
 
 
 
 <div class = "top-nav">
-    <a class="active" href="#home">Home</a>
+    <a class="navB" href="#home">Home</a>
     <a> - </a>
-    <a class="Programming Projects" href="#Programming Projects">Programming Projects</a>
+    <a class = "navB" href="#Math Materials">Math Materials</a>
     <a> - </a>
-    <a class = "Math Materials" href="#Math Materials">Math Materials</a>
+    <a class = "navB" href = "#Resume">Resume</a>
     <a> - </a>
-    <a class = "Resume" href = "#Resume">Resume</a>
+    <a class = "navB" href = "#About Me">About Me</a>
     <a> - </a>
-    <a class = "About Me" href = "#About Me">About Me</a>
-    <a> - </a>
-    <a class = "Donate" href = "Donate">Donate</a>
+    <a class = "navB" href = "Donate">Donate</a>
     
 </div>
 
@@ -56,3 +44,23 @@
 <script src="animatedGrid.js"></script>
 <!-- Call the animation script for the introduction text -->
 <!--script src="animateIntro.js"></script>-->
+<div class = "foreground">
+   <h2>About Me</h2>
+   <div class = "textContainer"><h3>My journey with technology began at a young age with devices like the Game Boy Advanced and PlayStation 1. I went to university and obtained dual degrees in computer science and mathematics graduating in the fall of 2022. Since then I have worked as a programming and math educator teaching others while developing my skills to start my career in tech. Below are my implementations from selected projects I have used to teach my students or up skill my abilities.</h3></div>
+
+   
+    <h1>Maze Generator</h1>
+    <div class="textContainer">
+        <h3>This project was for my students begginer programming students final project. They were to make a maze game that generates a maze then allows the player to navigate throught it with the arrow keys until they reach the exit square. Below is a clip of my solution running. If you would like to download this and try it for yourself you can do so at <span clas="githubMazeLink">This Link</span>. The biggest lesson I took away from this project was how to integrate the pygame libray for video game development and how to design a flexible maze generation algorithm.</h3>
+    </div>
+
+    <h1>Minecraft Stronghold Finder</h1>
+    <div class="textContainer">
+        <h3>This project was a fun challenge to build a program that can calculate the location of the strong hold in minecraft using the method of triangulation. I built it out in python quickly and wanted to explore python-web integrations and stumbled upon the Brython project. I built out a static site on github pages and inserted my python code with brython as a backend. You can try this project out<a class = "InTextLink" href="https://austinboydston.github.io/MinecraftStrongholdFinder/" target="_blank">here.</a> I am very pleased with the result and will take Brython with me as a tool I can use anytime it is more cost effective to run rather than a complete rewrite in Javascript.</h3>
+    </div>
+
+    <h1> Asteroids Like Space Game </h1>
+    <div class="textContainer">
+        <h3>This one is actually two for one. The left clip is from a game I developed during college, and the one on the right is from my first teaching job where I taught my student how to make games using the Godot Engine. The left game was built with Game Maker studio. All the art and music was my own work and I gained an appreciation for working in an engine to build games. What I learned most here was how to approach game frame rendering and timming in a live simulation.</h3>
+    </div>
+</div>
