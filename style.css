@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+html { scroll-behavior: smooth; } 
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
 
 body {
     background-color: #0d1117;
@@ -13,7 +16,7 @@ body {
 h3{
     color: #eeeeee;
     font-family: 'Montserrat';
-    font-size: 16px;
+    font-size: 20px;
     display: block;
     line-height: 1.5;
 }
@@ -37,6 +40,7 @@ h1{
     font-family: 'Montserrat';
     font-weight: 500;
     font-size: 70px;
+    padding-top: 30px;
 }
 
 
@@ -210,10 +214,38 @@ h4{
     color: #00ff55;
 }
 
-.textContainer{
-    max-width: 80%;
+.spacer{
+    background-color:#242424;   
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+
 }
 
+.textContainer{
+    max-width: 80%;
+    padding-bottom: 20px;
+}
+
+.embededMCCalc{
+    width: 80%;
+    height: 500px;
+
+}
+.mazeimage{
+    width: 80%;
+    height: 60%;
+}
+
+.spacegifrow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spaceimg{
+    width: 40%;
+}
   .foreground{
     display: flex;
     flex-direction: column;
@@ -224,5 +256,8 @@ h4{
 }
   
 
-
+.end{
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
 
