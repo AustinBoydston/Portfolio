@@ -22,8 +22,7 @@ h2{
     align-items: center;
     justify-content: center;
     z-index: 13;
-    color: #ff007b;
-    text-shadow: #ff007b 0px 0px 15px;
+    color: #ff007b; 
     font-family: 'Montserrat';
     font-weight: 500;
     font-size: 90px;
