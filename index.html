@@ -10,6 +10,31 @@
     <meta property='og:type' content = 'website'/>
     <title>Austin Boydston</title>
     <link rel="stylesheet" href="style.css">
+  
+  
+
+    <div id = "topDiv">
+        <div class = "background1">
+            <canvas id="GridCanvas" width="200" height="100" style="border:1px solid #000000;"></canvas>
+            <div class = "revealedArea"></div>
+        </div>
+        
+        
+        
+        
+        <div class="container">
+            
+            <h4 class = "text1" id = "Introduction">Hello, I'm <span class = "HighlightText">Austin</span>.</h1> 
+            <h4 class = "text2" id = "Introduction2">I am a full stack developer.</h1> 
+            <button class= "button1" id="viewWork">↓ View My Work ↓</button>
+        </div>
+        
+        </div>
+
+    <!-- Call the animation script for the dot matrix flow -->
+<script src="animatedGrid.js"></script>
+
+
 
 </head>
 
@@ -25,18 +50,6 @@
 <script src="loadingScreen.js"></script>
 
 
-
-<div class="container">
-    
-    <h4 class = "text1" id = "Introduction">Hello, I'm <span class = "HighlightText">Austin</span>.</h1> 
-    <h4 class = "text2" id = "Introduction2">I am a full stack developer.</h1> 
-    <button class= "button1" id="viewWork">↓ View My Work ↓</button>
-</div>
-
-</div>
-
-<!-- Call the animation script for the dot matrix flow -->
-<script src="animatedGrid.js"></script>
 
 <div class = "top-nav">
     <a id = "homeNav" class="navB" href="#home">Home</a>
@@ -54,12 +67,12 @@
 <!--script src="animateIntro.js"></script>-->
 <div class = "foreground">
    <h2>About Me</h2>
-   <div class = "textContainer"><h3>My journey with technology began at a young age with devices like the Game Boy Advanced and PlayStation 1. I went to university and obtained dual degrees in computer science and mathematics graduating in the fall of 2022. Since then I have worked as a programming and math educator teaching others while developing my skills. Below are my implementations from selected projects I have used to teach my students or up skill my abilities.</h3></div>
+   <div class = "textContainer"><h3>My journey with technology began at a young age with devices like the GameBoy Advanced and PlayStation 1. I went to university and obtained dual degrees in computer science and mathematics graduating in the fall of 2022. Since then I have worked as a programming and math educator teaching others while developing my skills. Below are my implementations from selected projects I have used to teach my students or up-skill my abilities.</h3></div>
 
    
     <h1 id="mazeTitle">Maze Generator</h1>
     <div class="textContainer">
-        <h3>This project was for my students begginer programming final project. They were to make a maze game that generates a maze then allows the player to navigate throught it with the arrow keys until they reach the exit square. Below is a clip of my solution running. If you would like to download this and try it for yourself you can do so at <a clas="githubMazeLink" href="https://github.com/AustinBoydston/GeneratedMazeGame" target ="_blank">This Link.</a>The biggest lesson I took away from this project was how to integrate the pygame libray for video game development and how to design a flexible maze generation algorithm.</h3>
+        <h3>This project was for my students' final project. They were to make a maze game that generates a maze then allows the player to navigate through it with the arrow keys until they reach the exit square. Below is a clip of my solution running. If you would like to download this and try it for yourself you can do so at <a clas="githubMazeLink" href="https://github.com/AustinBoydston/GeneratedMazeGame" target ="_blank">This Link.</a>The biggest lesson I took away from designing this project was how to integrate the pygame library for video game development and how to design a flexible maze generation algorithm.</h3>
     </div>
     <img class = "mazeimage" src="mazegame.gif">
 
@@ -77,7 +90,8 @@
 
     <h1> Asteroids Like Space Game </h1>
     <div class="textContainer">
-        <h3>This is a game I developed using game maker studio engine that you can download <a href="https://workupload.com/file/mMmvfUUTmBK" target="_blank">here</a>(The password is spacegame). I have used the experience from this game to teach students how to create similar 2d games in godot. All the art and music was my own work and I gained an appreciation for working in an engine to build games. What I learned most here was how to approach game frame rendering, collision, and timing in a live simulation. Godot is a very similar engine that's free and my students have loved working with it.</h3>
+        <h3>This is a game I developed using Game Maker Studio engine that you can download <a href="https://workupload.com/file/mMmvfUUTmBK" target="_blank">here</a>(The password is spacegame). I have used the experience from this game to teach students how to create similar 2d games in godot. All the art and music was my own work and I gained an appreciation for working in an engine to build games. What I learned most here was how to approach game frame rendering, collision, and timing in a live simulation. Godot is a very similar engine that's free and my students have loved working with it.
+        </h3>
     </div>
     <div class = "spacegifrow">
         <img class = "spaceimg" src="spacegame1.gif">
